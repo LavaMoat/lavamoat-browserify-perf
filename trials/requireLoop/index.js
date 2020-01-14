@@ -15,14 +15,14 @@ const tasks = {
     // reuse previous build
     run: `node -p "require('ses').makeSESRootRealm().evaluate(require('fs').readFileSync('./bundle.js','utf8'), { global })"`,
   },
-  'bify+lavamoat': {
-    prep: 'yarn build',
-    run: 'node bundle.js',
-  },
-  // 'bify+lavamoat w/ harden': {
-  //   prep: 'yarn build:harden',
+  // 'bify+lavamoat': {
+  //   prep: 'yarn build',
   //   run: 'node bundle.js',
   // },
+  'bify+lavamoat w/ harden': {
+    prep: 'yarn build:harden',
+    run: 'node bundle.js',
+  },
 }
 
 performTest(tasks, nRange)

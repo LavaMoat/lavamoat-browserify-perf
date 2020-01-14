@@ -8,7 +8,8 @@ const { pipeline } = require('stream')
 // "unsafe": "> bundle.js",
 const buildTarget = process.env.TARGET
 const useLavamoat = buildTarget !== 'unsafe'
-const configPath = buildTarget === 'harden' ? './lavamoat-config-harden.json' : './lavamoat-config.json'
+const configPath = './lavamoat-config.json'
+const configOverridePath = buildTarget === 'harden' ? './lavamoat-config-harden.json' : undefined
 const destPath = buildTarget === 'autogen' ? '/dev/null' : './bundle.js'
 const writeAutoConfig = buildTarget === 'autogen'
 
@@ -27,6 +28,7 @@ if (useLavamoat) {
   plugin.push(['lavamoat-browserify', {
     writeAutoConfig,
     config: configPath,
+    configOverride: configOverridePath,
   }])
 }
 

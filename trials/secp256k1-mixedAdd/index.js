@@ -15,14 +15,14 @@ const tasks = {
     // reuse previous build
     run: `node -p "require('ses').makeSESRootRealm().evaluate(require('fs').readFileSync('./bundle.js','utf8'), { global })"`,
   },
-  'bify+lavamoat': {
-    prep: 'yarn build',
-    run: 'node bundle.js',
-  },
-  // 'bify+lavamoat w/ harden': {
-  //   prep: 'yarn build:harden',
+  // 'bify+lavamoat': {
+  //   prep: 'yarn build',
   //   run: 'node bundle.js',
   // },
+  'bify+lavamoat w/ harden': {
+    prep: 'yarn build:harden',
+    run: 'node bundle.js',
+  },
 }
 
 main()
@@ -32,14 +32,14 @@ async function main () {
 
   // remove startup time
   const bifyBaseline = results['bify'].slice(-1)[0] - results['bify'][0]
-  const lavamoat = results['bify+lavamoat'].slice(-1)[0] - results['bify+lavamoat'][0]
-  // const lavamoatHarden = results['bify+lavamoat w/ harden'].slice(-1)[0] - results['bify+lavamoat w/ harden'][0]
+  // const lavamoat = results['bify+lavamoat'].slice(-1)[0] - results['bify+lavamoat'][0]
+  const lavamoatHarden = results['bify+lavamoat w/ harden'].slice(-1)[0] - results['bify+lavamoat w/ harden'][0]
 
-  const lavamoatPerf = lavamoat/bifyBaseline
-  // // const lavamoatHardenPerf = lavamoatHarden/bifyBaseline
+  // const lavamoatPerf = lavamoat/bifyBaseline
+  const lavamoatHardenPerf = lavamoatHarden/bifyBaseline
 
-  log(`lavamoatPerf: ${lavamoatPerf.toFixed(1)}`)
-  // // log(`lavamoatHardenPerf: ${lavamoatHardenPerf.toFixed(1)}`)
+  // log(`lavamoatPerf: ${lavamoatPerf.toFixed(1)}`)
+  log(`lavamoatHardenPerf: ${lavamoatHardenPerf.toFixed(1)}`)
 }
 
 function log (input) {
