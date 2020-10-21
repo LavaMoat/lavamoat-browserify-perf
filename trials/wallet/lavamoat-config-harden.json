@@ -4,10 +4,7 @@
       "comment": "cant mutate modueExports at runtime",
       "exportsDefense": "readOnlyMembrane"
     },
-    "ethereumjs-util": {
-      "comment": "cant harden Buffers (array buffer views)",
-      "exportsDefense": "readOnlyMembrane"
-    },
+
     "crypto-browserify": {
       "comment": "cant harden Buffers (array buffer views)",
       "exportsDefense": "readOnlyMembrane"

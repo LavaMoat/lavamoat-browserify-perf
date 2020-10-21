@@ -6251,8 +6251,6 @@ function createDistortion ({ setHandlerForRef }) {
       }
     },
     "ethereumjs-util": {
-      "comment": "cant harden Buffers (array buffer views)",
-      "exportsDefense": "readOnlyMembrane",
       "packages": {
         "assert": true,
         "bn.js": true,
