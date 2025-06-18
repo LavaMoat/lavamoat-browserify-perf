@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "browserify": "^16.5.0",
-    "lavamoat-browserify": "4.0.0",
+    "lavamoat-browserify": "8.1.3",
     "readable-stream-patch": "kumavis/readable-stream#v2-no-util-mut",
     "ses": "^0.6.4"
   },
